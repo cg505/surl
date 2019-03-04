@@ -113,7 +113,7 @@ class Records extends React.PureComponent {
 		this.setState({
 			loading: true,
 		});
-		fetch('http://localhost:8000/pdns/api/v1/servers/localhost/zones/c3.wtf.', {
+		fetch('/pdns/api/v1/servers/localhost/zones/c3.wtf.', {
 			headers: {
 				'X-API-Key': this.props.apiKey,
 			},
@@ -214,7 +214,7 @@ class RecordForm extends React.PureComponent {
 				}],
 			}],
 		};
-		fetch('http://localhost:8000/pdns/api/v1/servers/localhost/zones/c3.wtf.', {
+		fetch('/pdns/api/v1/servers/localhost/zones/c3.wtf.', {
 			method: 'PATCH',
 			headers: {
 				'X-API-Key': this.props.apiKey,
@@ -348,7 +348,7 @@ class ShorturlList extends React.PureComponent {
 		this.setState({
 			loading: true,
 		});
-		fetch('http://localhost:8000/surl/api', {
+		fetch('/surl/api', {
 			headers: {
 				'X-API-Key': this.props.apiKey,
 			},
@@ -438,7 +438,7 @@ class ShorturlForm extends React.PureComponent {
 		const data = {
 			target,
 		};
-		fetch(`http://localhost:8000/surl/api/${slug}`, {
+		fetch(`/surl/api/${slug}`, {
 			method: 'PUT',
 			headers: {
 				'X-API-Key': this.props.apiKey,

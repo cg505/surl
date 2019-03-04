@@ -1,0 +1,14 @@
+[Unit]
+Description=Shorturl API
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=surl
+WorkingDirectory=/opt/surl
+ExecStart=/opt/surl/venv/bin/gunicorn -w 2 -b localhost:8001 --log-file - app.wsgi:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+

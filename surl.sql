@@ -1,3 +1,4 @@
+USE `shorturls`;
 CREATE TABLE `shorturls` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

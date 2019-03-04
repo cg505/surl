@@ -1,3 +1,4 @@
+import codecs
 from functools import partial
 import json
 import pymysql
@@ -99,7 +100,7 @@ def respond_api(environ, start_response):
     if environ['REQUEST_METHOD'] == 'PUT':
         try:
             slug = environ['PATH_INFO'].lstrip('/')
-            body = json.load(environ['wsgi.input'])
+            body = json.load(codecs.getreader('utf-8')(environ['wsgi.input']))
             target = body.get('target')
             if not target:
                 return respond_400(environ, start_response, 'must include target')
