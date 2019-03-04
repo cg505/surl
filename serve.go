@@ -18,7 +18,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	http.Handle("/", http.FileServer(http.Dir("")))
+	http.Handle("/", http.FileServer(http.Dir("static/")))
 	http.Handle("/pdns/", http.StripPrefix("/pdns/", httputil.NewSingleHostReverseProxy(PDNS_URL)))
 	http.Handle("/surl/", http.StripPrefix("/surl/", httputil.NewSingleHostReverseProxy(SURL_URL)))
 
