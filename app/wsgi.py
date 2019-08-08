@@ -3,6 +3,7 @@ from functools import partial
 import json
 import pymysql
 import re
+import hmac
 import wsgiref.util
 from .secret import API_KEY, MYSQL_DB_PWD
 
@@ -94,7 +95,7 @@ def respond_get(environ, start_response):
         return ['slug "{}" not found'.format(slug).encode()]
 
 def respond_api(environ, start_response):
-    if environ.get('HTTP_X_API_KEY') != API_KEY:
+    if not hmac.compare_digest(environ.get('HTTP_X_API_KEY'), API_KEY):
         start_response('401 Unauthorized', [])
         return []
     if environ['REQUEST_METHOD'] == 'PUT':
